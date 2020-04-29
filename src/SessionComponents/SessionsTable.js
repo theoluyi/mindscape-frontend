@@ -1,8 +1,11 @@
 import React from 'react'
-import { Header, Table, Rating } from 'semantic-ui-react'
+import { Header, Table } from 'semantic-ui-react'
+// import { Rating } from 'semantic-ui-react'
+import SessionCreatorForm from './SessionCreatorForm'
 
 const SessionsTable = (props) => {
 
+    // DEFINITIONS
     const formatDate = (date) => {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),
@@ -17,7 +20,6 @@ const SessionsTable = (props) => {
     
         return [month, day].join('/');
     }
-
     let sessionRows = props.user.sessions.map( session => {
 
         let minuteDuration = session.duration / 60
@@ -40,9 +42,11 @@ const SessionsTable = (props) => {
         )
     })
     
+    // JSX 
     return (
         <div>
             <h1>{props.user.username}'s Sessions</h1>
+            <SessionCreatorForm/>
             <Table celled padded>
             {/* HARDCODED COLUMN TITLES I.E., HEADER CELLS */}
                 <Table.Header>
