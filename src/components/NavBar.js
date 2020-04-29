@@ -2,6 +2,14 @@ import React from 'react';
 import {NavLink} from 'react-router-dom'
 
 const NavBar = () => {
+
+  const logout = () => {
+    console.log("logout button pressed")
+    localStorage.clear()
+    // this step still requires a refresh but for now that's good enough
+    // this feature is more for easy testing not for UI
+  }
+
   return(
     <ul className="nav">
       <li>
@@ -21,6 +29,9 @@ const NavBar = () => {
       </li>
       <li>
         <NavLink to="/register">Register</NavLink>
+      </li>
+      <li>
+        <NavLink to="/" onClick={logout} >Logout</NavLink>
       </li>
     </ul>
   )
