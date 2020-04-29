@@ -1,13 +1,15 @@
 import NavBar from './components/NavBar'
 import Welcome from './components/Welcome'
 import MeditationContainer from './MeditationComponents/MeditationContainer'
-import SessionContainer from './SessionComponents/SessionContainer'
+import SessionsTable from './SessionComponents/SessionsTable'
 import About from './components/About'
 import Form from './components/Form'
 
+
 import React from 'react';
 import {Switch, Route} from 'react-router-dom'
-import {withRouter, Redirect} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
 
 class App extends React.Component {
   state = {
@@ -96,7 +98,8 @@ class App extends React.Component {
       <Switch>
         <Route path="/" exact> <Welcome username={this.state.user.username}/> </Route>
         <Route path="/meditate"> <MeditationContainer/> </Route>
-        <Route path="/sessions"> <SessionContainer/> </Route>
+        {/* <Route path="/sessions"> <SessionContainer user={this.state.user} /> </Route> */}
+        <Route path="/sessions"> <SessionsTable user={this.state.user} /> </Route>
         <Route path="/about" component={About}/>
         <Route path="/login" render={ this.renderForm } />
         <Route path="/register" render={ this.renderForm } />
