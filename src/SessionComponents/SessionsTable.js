@@ -4,7 +4,7 @@ import { Header, Table, Container } from 'semantic-ui-react'
 import SessionCreatorForm from './SessionCreatorForm'
 
 const SessionsTable = (props) => {
-    console.log(props.user.sessions)
+    // console.log(props.user.sessions)
 
     // DEFINITIONS
     const formatDate = (date) => {
@@ -23,7 +23,7 @@ const SessionsTable = (props) => {
         return [month, day].join('/');
     }
     let sessionRows = props.user.sessions.map( session => {
-        let sessionPerceptionsArray = session.perceptions.map(perceptionPOJO => <div> • {perceptionPOJO.note} </div>)
+        let sessionPerceptionsArray = session.perceptions.map(perceptionPOJO => <div key={perceptionPOJO.id}> • {perceptionPOJO.note} </div>)
 
         // let sessionPerceptionsString = sessionPerceptionsArray.join('... ')
 
