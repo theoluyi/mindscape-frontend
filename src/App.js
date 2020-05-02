@@ -5,7 +5,6 @@ import SessionsTable from './SessionComponents/SessionsTable'
 import About from './components/About'
 import Form from './components/Form'
 
-
 import React from 'react';
 import {Switch, Route} from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
@@ -91,6 +90,26 @@ class App extends React.Component {
     }
   }
 
+  // state = {
+  //   user: {
+  //     id: 0,
+  //     username: "",
+  //     sessions: []
+  //   },
+  //   token: ""
+  // }
+  createNewSession = (newSession) => {
+    console.log("hello from inside App", newSession)
+    let newSessionsArray = [...this.state.user.sessions, newSession]
+
+    this.setState({
+      user: {
+        ...this.state.user,
+        sessions:  newSessionsArray
+      }
+    })
+  }
+
   render() {
     return (
     <div className='App'>
@@ -99,7 +118,15 @@ class App extends React.Component {
         <Route path="/" exact> <Welcome username={this.state.user.username}/> </Route>
         <Route path="/meditate"> <MeditationContainer/> </Route>
         {/* <Route path="/sessions"> <SessionContainer user={this.state.user} /> </Route> */}
-        <Route path="/sessions"> <SessionsTable user={this.state.user} /> </Route>
+        <Route path="/sessions"> 
+          <SessionsTable 
+            user={this.state.user}
+            // user may be an unnecessary prop at this point
+            // I think I just added it accidentally while meaning to pass down the token
+            token={this.state.token}
+            createNewSession={this.createNewSession}
+          /> 
+        </Route>
         <Route path="/about" component={About}/>
         <Route path="/login" render={ this.renderForm } />
         <Route path="/register" render={ this.renderForm } />

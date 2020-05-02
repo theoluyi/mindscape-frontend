@@ -1,14 +1,8 @@
-import React, { useState } from 'react'
-import {Form, Button} from 'semantic-ui-react'
+import React from 'react'
+import {Form} from 'semantic-ui-react'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-import SemanticDatepicker from 'react-semantic-ui-datepickers';
-import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
-
-const timeOptions = [
-    { key: '8', text: '8am', value: 8 },
-    { key: '9', text: '9am', value: 9 },
-    { key: '10', text: '10am', value: 10 },
-  ]
 const durationOptions = [
     { key: '10', text: '10 minutes', value: 10 },
     { key: '12', text: '12 minutes', value: 12 },
@@ -21,8 +15,7 @@ const durationOptions = [
 class SessionCreatorForm extends React.Component {
     state = {
         id: null,
-        start_time_date: "",
-        start_time_time: "",
+        start_time: "",
         end_time: null,
         duration: 0,
         landscape: null,
@@ -30,23 +23,12 @@ class SessionCreatorForm extends React.Component {
         perceptions: []
     }
 
-    AppWithBasic = () => {
-        const [currentDate, setNewDate] = useState(null);
-        const onChange = (event, data) => setNewDate(data.value);
-        return (
-                <div>
-                <div><strong>Date</strong></div>
-                <SemanticDatepicker onChange={onChange}> </SemanticDatepicker>
-                </div>
-        )
-      };
-
     handleChange = (e) => {
         let {name, value} = e.target
         this.setState({
           [name]: value
         })
-        console.log("Change detected")
+        // console.log("Change detected")
       }
 
       handleDropdownSelectionChange = (e, data) => {
@@ -55,21 +37,64 @@ class SessionCreatorForm extends React.Component {
         this.setState({
             [name]: value
         })
-        console.log("Dropdown Selection change detected")
+        // console.log("Dropdown Selection change detected")
       }
 
-    handleFormSubmit = () => {
-        console.log("Form Submitted")
+      handleDateChange = (date, event) => {
+        // note: time selection's event is undefined
+        this.setState({
+            start_time: date
+        })
+        
+      }
+
+    handleFormSubmit = (e, unknownObj) => {
+        e.preventDefault()
+
+        console.log("Form Submitted in SessionCreatorForm component")
+
+        fetch('http://localhost:4000/sessions', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `bearer ${this.props.token}`
+            },
+            body: JSON.stringify(this.state)
+        })
+        .then(r => r.json())
+        .then(sessionPOJO => {
+            this.props.createNewSession(sessionPOJO)
+        })
+
+        const blankState = {
+            id: null,
+            start_time: "",
+            end_time: null,
+            duration: 0,
+            landscape: null,
+            summary: "",
+            perceptions: []
+        }
+        this.setState(blankState)
     }
 
     render() {
-        const { start_time_time, duration, summary } = this.state
+        const { start_time, duration, summary } = this.state
 
         return(
             <Form onSubmit={this.handleFormSubmit}>
                 <Form.Group widths='equal'>
-                    <this.AppWithBasic/>
-                    <Form.Select
+                    <div>
+                    <div><strong>Date</strong></div>
+                    <DatePicker
+                        fluid
+                        name="start_time"
+                        selected={start_time}
+                        onChange={this.handleDateChange}
+                        showTimeSelect
+                    />
+                    </div>
+                    {/* <Form.Select
                         fluid
                         label='Time of Day'
                         options={timeOptions}
@@ -79,46 +104,30 @@ class SessionCreatorForm extends React.Component {
                         onChange={this.handleDropdownSelectionChange}
                         // this isn't working yet, likely because it's a select form and I'm not using the right attributes
                         // or something like that. google: react controlled form select 
-                    />
+                    /> */}
                     <Form.Select
                         fluid
                         label='Duration'
                         options={durationOptions}
-                        placeholder='How long did you meditate...'
                         name="duration"
                         value={duration}
                         onChange={this.handleDropdownSelectionChange}
-                    />    
-                    {/* <Form.Input 
-                        fluid label='Duration' 
-                        placeholder='Duration'     
-                    /> */}
-
+                    />
                 </Form.Group>
-                
-                <Form.TextArea 
+                <Form.TextArea
                     name='summary' 
                     label='Session Summary' 
                     placeholder='What was memorable?' 
-                    name="summary"
                     value={summary}
                     onChange={this.handleChange}
                 />
-                <Form.Button>Submit</Form.Button>
+                <Form.Button>Add a session </Form.Button>
             </Form>
         )
     }
 }
 
 export default SessionCreatorForm
-
-
-// --------------------------------------------------------------------------------------------
-// const AppWithBasic = () => {
-//   const [currentDate, setNewDate] = useState(null);
-//   const onChange = (event, data) => setNewDate(data.value);
-//   return <SemanticDatepicker onChange={onChange} />;
-// };
 
 /** 
  * 
@@ -135,3 +144,11 @@ export default SessionCreatorForm
  * we want all this stuff in state so that we can directly add
  * it to the backend
  */
+
+
+ /** const timeOptions = [
+    { key: '8', text: '8am', value: 8 },
+    { key: '9', text: '9am', value: 9 },
+    { key: '10', text: '10am', value: 10 },
+  ]
+*/    
