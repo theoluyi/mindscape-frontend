@@ -7,6 +7,7 @@ class ResetButton extends React.Component {
 
     handleClick = (event) => {
         console.log("reset button clicked")
+        this.props.resetCountDown()
     }
 
     render() {

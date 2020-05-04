@@ -5,13 +5,15 @@ class StartButton extends React.Component {
         clicked: false
     }
 
+    // probably should get rid of this component's state since not very SSOT
+
     handleClick = (event) => {
-        if (this.state.clicked) {
+        if (this.props.timerStarted) {
             this.props.pauseCountDown()
         } 
         else {this.props.startCountDown()}
 
-        this.setState({clicked: !this.state.clicked})
+        this.props.toggleTimerStartState()
     }
 
     render() {
@@ -21,7 +23,7 @@ class StartButton extends React.Component {
             className="ui button"
             onClick={this.handleClick}
             >
-            {this.state.clicked? 'Pause' : 'Start'}
+            {this.props.timerStarted? 'Pause' : 'Start'}
         </button>
       </div>
        );
