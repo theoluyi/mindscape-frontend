@@ -1,17 +1,12 @@
 import React from 'react'
 
-class StartButton extends React.Component {
+class ResetButton extends React.Component {
     state = {
         clicked: false
     }
 
     handleClick = (event) => {
-        if (this.state.clicked) {
-            this.props.pauseCountDown()
-        } 
-        else {this.props.startCountDown()}
-
-        this.setState({clicked: !this.state.clicked})
+        console.log("reset button clicked")
     }
 
     render() {
@@ -21,11 +16,11 @@ class StartButton extends React.Component {
             className="ui button"
             onClick={this.handleClick}
             >
-            {this.state.clicked? 'Pause' : 'Start'}
+            Reset
         </button>
       </div>
        );
    }
  } 
 
-export default StartButton
+export default ResetButton
