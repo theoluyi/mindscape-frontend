@@ -5,12 +5,11 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const durationOptions = [
     { key: '10', text: '10 minutes', value: 10 },
-    { key: '12', text: '12 minutes', value: 12 },
     { key: '15', text: '15 minutes', value: 15 },
     { key: '20', text: '20 minutes', value: 20 },
     { key: '30', text: '30 minutes', value: 30 },
     { key: '60', text: '60 minutes', value: 60 },
-  ]
+]
 
 class SessionCreatorForm extends React.Component {
     state = {
@@ -23,13 +22,12 @@ class SessionCreatorForm extends React.Component {
         perceptions: []
     }
 
-    handleChange = (e) => {
+    handleSummaryChange = (e) => {
         let {name, value} = e.target
         this.setState({
           [name]: value
         })
-        // console.log("Change detected")
-      }
+    }
 
       handleDropdownSelectionChange = (e, data) => {
         // console.log(data.name, data.value)
@@ -37,20 +35,16 @@ class SessionCreatorForm extends React.Component {
         this.setState({
             [name]: value
         })
-        // console.log("Dropdown Selection change detected")
       }
 
       handleDateChange = (date, event) => {
-        // note: time selection's event is undefined
         this.setState({
             start_time: date
         })
-        
       }
 
     handleFormSubmit = (e, unknownObj) => {
         e.preventDefault()
-
         console.log("Form Submitted in SessionCreatorForm component")
 
         fetch('http://localhost:4000/sessions', {
@@ -66,7 +60,7 @@ class SessionCreatorForm extends React.Component {
             this.props.createNewSession(sessionPOJO)
         })
 
-        const blankState = {
+        this.setState({
             id: null,
             start_time: "",
             end_time: null,
@@ -74,8 +68,7 @@ class SessionCreatorForm extends React.Component {
             landscape: null,
             summary: "",
             perceptions: []
-        }
-        this.setState(blankState)
+        })
     }
 
     render() {
@@ -85,14 +78,14 @@ class SessionCreatorForm extends React.Component {
             <Form onSubmit={this.handleFormSubmit}>
                 <Form.Group widths='equal'>
                     <div>
-                    <div><strong>Date</strong></div>
-                    <DatePicker
-                        fluid
-                        name="start_time"
-                        selected={start_time}
-                        onChange={this.handleDateChange}
-                        showTimeSelect
-                    />
+                        <div><strong>Date</strong></div>
+                        <DatePicker
+                            fluid
+                            name="start_time"
+                            selected={start_time}
+                            onChange={this.handleDateChange}
+                            showTimeSelect
+                        />
                     </div>
                     <Form.Select
                         fluid
@@ -108,7 +101,7 @@ class SessionCreatorForm extends React.Component {
                     label='Session Summary' 
                     placeholder='What was memorable?' 
                     value={summary}
-                    onChange={this.handleChange}
+                    onChange={this.handleSummaryChange}
                 />
                 <Form.Button>Add a session </Form.Button>
             </Form>
@@ -133,11 +126,3 @@ export default SessionCreatorForm
  * we want all this stuff in state so that we can directly add
  * it to the backend
  */
-
-
- /** const timeOptions = [
-    { key: '8', text: '8am', value: 8 },
-    { key: '9', text: '9am', value: 9 },
-    { key: '10', text: '10am', value: 10 },
-  ]
-*/    

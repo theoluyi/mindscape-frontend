@@ -80,7 +80,6 @@ class App extends React.Component {
     })
   }
 
-
   renderForm = (routerProps) => {
     if(routerProps.location.pathname === "/login"){
       return <Form formName="Login Form" handleSubmit={this.handleLoginSubmit}/>
@@ -89,14 +88,6 @@ class App extends React.Component {
     }
   }
 
-  // state = {
-  //   user: {
-  //     id: 0,
-  //     username: "",
-  //     sessions: []
-  //   },
-  //   token: ""
-  // }
   createNewSession = (newSession) => {
     console.log("hello from inside App", newSession)
     let newSessionsArray = [...this.state.user.sessions, newSession]
@@ -104,7 +95,7 @@ class App extends React.Component {
     this.setState({
       user: {
         ...this.state.user,
-        sessions:  newSessionsArray
+        sessions: newSessionsArray
       }
     })
   }
@@ -115,13 +106,17 @@ class App extends React.Component {
       <NavBar/>
       <Switch>
         <Route path="/" exact> <Welcome username={this.state.user.username}/> </Route>
-        <Route path="/meditate"> <MeditationContainer/> </Route>
-        {/* <Route path="/sessions"> <SessionContainer user={this.state.user} /> </Route> */}
+        <Route path="/meditate"> 
+          <MeditationContainer
+            createNewSession={this.createNewSession}
+            token={this.state.token}
+          /> 
+        </Route>
         <Route path="/sessions"> 
           <SessionsTable 
-            user={this.state.user}
-            // user may be an unnecessary prop at this point
+            user={this.state.user} // user may be an unnecessary prop at this point
             // I think I just added it accidentally while meaning to pass down the token
+
             token={this.state.token}
             createNewSession={this.createNewSession}
           /> 

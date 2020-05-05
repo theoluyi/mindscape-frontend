@@ -1,6 +1,5 @@
 import React from 'react'
 import { Header, Table, Container } from 'semantic-ui-react'
-// import { Rating } from 'semantic-ui-react'
 import SessionCreatorForm from './SessionCreatorForm'
 
 const SessionsTable = (props) => {

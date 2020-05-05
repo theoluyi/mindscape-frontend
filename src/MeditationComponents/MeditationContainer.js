@@ -1,12 +1,13 @@
-import React, {useState} from 'react'
-import Modal from 'react-modal';
+import React from 'react'
+// import {useState} from 'react'
+// import Modal from 'react-modal';
 import TimerInput from './TimerComponents/TimerInput'
 import Timer from './TimerComponents/Timer'
 import StartButton from './TimerComponents/StartButton'
 import ResetButton from './TimerComponents/ResetButton'
 import {Button} from 'semantic-ui-react'
 import SummaryModal from './SummaryModal'
-import SessionCreatorForm from '../SessionComponents/SessionCreatorForm'
+import MeditationCreatorForm from '../MeditationComponents/MeditationCreatorForm'
 import '../App.css'
 
 class MeditationContainer extends React.Component {
@@ -27,28 +28,12 @@ class MeditationContainer extends React.Component {
         }
     }
 
-    showModal = () => {
-        this.setState({ show: true})
-    }
-    
-    hideModal = () => {
-        this.setState({ show: false})
-    }
+    showModal = () => { this.setState({ show: true})  }
+    hideModal = () => { this.setState({ show: false}) }
 
-    handleInput = event => {
-        this.setState({
-            minutes: event.target.value
-        })
-    }
-
-    toggleTimerStartState = () => {
-        this.setState({timerStarted: !this.state.timerStarted})
-    }
-    
-    pauseCountDown = () => {
-        clearInterval(this.intervalHandle)
-    }
-    
+    handleInput = event => { this.setState({ minutes: event.target.value }) }
+    toggleTimerStartState = () => { this.setState({timerStarted: !this.state.timerStarted}) }
+    pauseCountDown = () => { clearInterval(this.intervalHandle) }
     resetCountDown = () => {
         this.pauseCountDown()
         this.setState({
@@ -62,7 +47,9 @@ class MeditationContainer extends React.Component {
     startCountDown = () => {
         let {minutes, seconds} = this.state
         if (!this.state.chosenDuration) { // !!!
-            this.state.chosenDuration = this.state.minutes
+            this.setState({
+                chosenDuration: this.state.minutes
+            })
         }        
         this.intervalHandle = setInterval(this.tick, 1000);
         this.secondsRemaining = (parseInt(minutes) * 60) + parseInt(seconds)
@@ -71,21 +58,15 @@ class MeditationContainer extends React.Component {
     tick = () => {
         let min = Math.floor(this.secondsRemaining / 60)
         let sec = this.secondsRemaining - (min * 60)
-
         this.setState({ minutes: min, seconds: sec })
 
-        if (sec < 10) {
-            this.setState({
-                seconds: '0' + this.state.seconds
-            })
-        }
+        if (sec < 10) { this.setState({ seconds: '0' + this.state.seconds }) }
 
         if (min === 0 && sec === 0) {
             clearInterval(this.intervalHandle);
             this.showModal()
             // this is the place to put the automatic sessionCreation invocation @dev 
         }
-
         this.secondsRemaining--
     }
 
@@ -113,38 +94,28 @@ class MeditationContainer extends React.Component {
                 />
                 <br/><br/><br/>
             <main>
-                <h1>React Modal</h1>
+                <h1>Save this session</h1>
                     <Button 
                         type="button"
                         onClick={this.showModal}
                     >
-                        open
+                        Open
                     </Button>
                     <SummaryModal 
                         show={this.state.show} 
                         handleClose={this.hideModal} 
                     >
-                        <SessionCreatorForm/>
-                        <p>You can save this session with or without a summary.</p>
-                        
+                        <MeditationCreatorForm
+                            meditationState={this.state}
+                            createNewSession={this.props.createNewSession}
+                            token={this.props.token}
+                        />
+                        <br/>
                     </SummaryModal>
             </main>
             </div>
         )
     }
 }
-
-
-// const SummaryModal = () => {
-//     const [modalIsOpen, setModalIsOpen] = useState(false)
-//     return (
-//         <div>
-//             <Modal isOpen={modalIsOpen}>
-//                 HELLO
-//             </Modal>
-//         </div>
-//     )
-// }
-
 
 export default MeditationContainer
