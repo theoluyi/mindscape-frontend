@@ -1,12 +1,6 @@
 import React from 'react'
 
 class StartButton extends React.Component {
-    state = {
-        clicked: false
-    }
-
-    // probably should get rid of this component's state since not very SSOT
-
     handleClick = (event) => {
         if (this.props.timerStarted) {
             this.props.pauseCountDown()

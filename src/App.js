@@ -73,7 +73,6 @@ class App extends React.Component {
       body: JSON.stringify(userInfo)
     })
     .then(r=>r.json())
-    // .then(console.log("hello world"))
     .then(resp => {
       console.log("HMMMMMM")
       this.handleResponse(resp)

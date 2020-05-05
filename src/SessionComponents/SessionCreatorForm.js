@@ -94,17 +94,6 @@ class SessionCreatorForm extends React.Component {
                         showTimeSelect
                     />
                     </div>
-                    {/* <Form.Select
-                        fluid
-                        label='Time of Day'
-                        options={timeOptions}
-                        placeholder='When did you meditate...'
-                        name="start_time_time"
-                        value={start_time_time}
-                        onChange={this.handleDropdownSelectionChange}
-                        // this isn't working yet, likely because it's a select form and I'm not using the right attributes
-                        // or something like that. google: react controlled form select 
-                    /> */}
                     <Form.Select
                         fluid
                         label='Duration'
