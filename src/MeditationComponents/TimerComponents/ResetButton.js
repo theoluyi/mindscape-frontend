@@ -1,9 +1,10 @@
 import React from 'react'
 
 class ResetButton extends React.Component {
-    state = {
-        clicked: false
-    }
+    // commenting this out because i don't think this needs state
+    // state = {
+    //     clicked: false
+    // }
 
     handleClick = (event) => {
         console.log("reset button clicked")

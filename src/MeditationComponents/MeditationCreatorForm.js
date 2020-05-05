@@ -47,10 +47,25 @@ class MeditationCreatorForm extends React.Component {
         })
     }
 
+    // this.props.meditationState = {
+    //     seconds: '00',
+    //     minutes: '10',
+    //     timerStarted: false,
+    //     chosenDuration: '',
+    //     show: false,
+    //     session: {
+    //         id: null,
+    //         start_time: "",
+    //         end_time: null,
+    //         duration: 0,
+    //         landscape: null,
+    //         summary: "",
+    //         perceptions: []
+    //     }
+    // }
+
     render() {
         const { summary } = this.state
-        console.log(this.props.meditationState)
-
         return(
             <Form onSubmit={this.handleFormSubmit}>
                 <Form.TextArea
