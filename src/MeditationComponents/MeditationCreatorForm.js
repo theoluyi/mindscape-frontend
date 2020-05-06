@@ -3,13 +3,7 @@ import {Form} from 'semantic-ui-react'
 
 class MeditationCreatorForm extends React.Component {
     state = {
-        id: null,
-        start_time: "",
-        end_time: null,
-        duration: 0,
-        landscape: null,
         summary: "",
-        perceptions: []
     }
 
     handleSummaryChange = (e) => {
@@ -22,7 +16,6 @@ class MeditationCreatorForm extends React.Component {
     handleFormSubmit = (e, unknownObj) => {
         e.preventDefault()
         console.log("Form Submitted in MeditationCreatorForm component")
-        console.log({...this.props.meditationState.session, summary: this.state.summary, duration: this.props.meditationState.chosenDuration})
 
         fetch('http://localhost:4000/sessions', {
             method: 'POST',
@@ -30,13 +23,19 @@ class MeditationCreatorForm extends React.Component {
                 'Content-type': 'application/json',
                 'Authorization': `bearer ${this.props.token}`
             },
-            body: JSON.stringify({...this.props.meditationState.session, summary: this.state.summary, duration: this.props.meditationState.chosenDuration})
+            body: JSON.stringify({
+                ...this.props.meditationState.session, 
+                summary: this.state.summary, 
+                duration: this.props.meditationState.chosenDuration,
+                perceptions: this.props.meditationState.perceptions
+            })
         })
         .then(r => r.json())
         .then(sessionPOJO => {
             this.props.createNewSession(sessionPOJO)
         })
-
+        
+        // wipes state clean after form submitted
         this.setState({
             id: null,
             start_time: "",
@@ -47,23 +46,6 @@ class MeditationCreatorForm extends React.Component {
             perceptions: []
         })
     }
-
-    // this.props.meditationState = {
-    //     seconds: '00',
-    //     minutes: '10',
-    //     timerStarted: false,
-    //     chosenDuration: '',
-    //     show: false,
-    //     session: {
-    //         id: null,
-    //         start_time: "",
-    //         end_time: null,
-    //         duration: 0,
-    //         landscape: null,
-    //         summary: "",
-    //         perceptions: []
-    //     }
-    // }
 
     render() {
         const { summary } = this.state

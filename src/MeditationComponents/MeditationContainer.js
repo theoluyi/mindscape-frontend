@@ -9,6 +9,7 @@ import {Button} from 'semantic-ui-react'
 import SummaryModal from './SummaryModal'
 import MeditationCreatorForm from '../MeditationComponents/MeditationCreatorForm'
 import '../App.css'
+import PerceptionCreatorForm from './PerceptionCreatorForm'
 
 class MeditationContainer extends React.Component {
     state = {
@@ -34,6 +35,13 @@ class MeditationContainer extends React.Component {
      * after I had finally fixed that buggy crap
      * I may have changed one other thing but my brain's not working now.
      */
+
+    addOnePerception = (perception) => {
+        console.log(`adding one perception called ${perception} in the MeditationContainer`)
+        let copyOfState = {...this.state}
+        copyOfState.session.perceptions.push(perception)
+        this.setState(copyOfState)
+    }
 
     showModal = () => { this.setState({ show: true})  }
     hideModal = () => { this.setState({ show: false}) }
@@ -95,7 +103,11 @@ class MeditationContainer extends React.Component {
     render() {
         return (
             <div>
-                <h1>Meditate</h1>
+                <br/>
+                <PerceptionCreatorForm
+                    addOnePerception={this.addOnePerception}
+                />
+                <br/> <br/> <br/> <br/> <br/> <br/>
                 <TimerInput 
                     minutes={this.state.minutes}
                     handleInput={this.handleInput}
