@@ -86,7 +86,8 @@ class MeditationContainer extends React.Component {
         if (min === 0 && sec === 0) {
             clearInterval(this.intervalHandle);
             this.showModal()
-            // this is the place to put the automatic sessionCreation invocation @dev 
+            // this is the place to put the automatic sessionCreation invocation @dev
+            // also when you might want to *somehow* switch the button from paused to finished
         }
         this.secondsRemaining--
     }

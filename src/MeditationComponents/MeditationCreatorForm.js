@@ -22,6 +22,7 @@ class MeditationCreatorForm extends React.Component {
     handleFormSubmit = (e, unknownObj) => {
         e.preventDefault()
         console.log("Form Submitted in MeditationCreatorForm component")
+        console.log({...this.props.meditationState.session, summary: this.state.summary, duration: this.props.meditationState.chosenDuration})
 
         fetch('http://localhost:4000/sessions', {
             method: 'POST',
@@ -29,7 +30,7 @@ class MeditationCreatorForm extends React.Component {
                 'Content-type': 'application/json',
                 'Authorization': `bearer ${this.props.token}`
             },
-            body: JSON.stringify({...this.props.meditationState.session, summary: this.state.summary})
+            body: JSON.stringify({...this.props.meditationState.session, summary: this.state.summary, duration: this.props.meditationState.chosenDuration})
         })
         .then(r => r.json())
         .then(sessionPOJO => {
