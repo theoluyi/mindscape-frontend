@@ -101,6 +101,8 @@ class App extends React.Component {
   }
 
   render() {
+    // console.log(this.state)
+    
     return (
     <div className='App'>
       <NavBar/>
@@ -108,6 +110,7 @@ class App extends React.Component {
         <Route path="/" exact> <Welcome username={this.state.user.username}/> </Route>
         <Route path="/meditate"> 
           <MeditationContainer
+            userID={this.state.user.id}
             createNewSession={this.createNewSession}
             token={this.state.token}
           /> 

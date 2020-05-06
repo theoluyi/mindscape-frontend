@@ -20,7 +20,8 @@ class MeditationContainer extends React.Component {
         chosenDuration: 0,
         show: false,
         session: {
-            id: null,
+
+            // id: null,
             start_time: "",
             end_time: null,
             duration: 0,
@@ -37,6 +38,7 @@ class MeditationContainer extends React.Component {
      * I may have changed one other thing but my brain's not working now.
      */
 
+     // this function should be irrelevant to the issue of losing perceptions before POST fetch is made
     addOnePerception = (perception) => {
         console.log(`${perception} perceived (in the MeditationContainer)`)
         let copyOfState = {...this.state}
@@ -102,6 +104,7 @@ class MeditationContainer extends React.Component {
     }
 
     render() {
+        // console.log("this.state.session.perceptions: ", this.state.session.perceptions)
         return (
             <div>
                 <br/>
@@ -143,6 +146,7 @@ class MeditationContainer extends React.Component {
                         handleClose={this.hideModal} 
                     >
                         <MeditationCreatorForm
+                            userID={this.props.userID}
                             meditationState={this.state}
                             createNewSession={this.props.createNewSession}
                             token={this.props.token}

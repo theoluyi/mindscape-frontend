@@ -15,24 +15,29 @@ class MeditationCreatorForm extends React.Component {
 
     handleFormSubmit = (e, unknownObj) => {
         e.preventDefault()
-        console.log("Form Submitted in MeditationCreatorForm component")
+        let sessionObj = {
+            ...this.props.meditationState.session,
+            user_id: this.props.userID,
+            summary: this.state.summary, 
+            duration: this.props.meditationState.chosenDuration,
+            perceptions: this.props.meditationState.session.perceptions
+            // BUG FOUND, INCORRECT: this.props.meditationState.perceptions
+        }
 
+        console.log("Form Submitted in MeditationCreatorForm component")
+        console.log("pre-fetch sessionObj: ", sessionObj)
         fetch('http://localhost:4000/sessions', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
                 'Authorization': `bearer ${this.props.token}`
             },
-            body: JSON.stringify({
-                ...this.props.meditationState.session, 
-                summary: this.state.summary, 
-                duration: this.props.meditationState.chosenDuration,
-                perceptions: this.props.meditationState.perceptions
-            })
+            body: JSON.stringify(sessionObj)
         })
         .then(r => r.json())
         .then(sessionPOJO => {
             this.props.createNewSession(sessionPOJO)
+            console.log("post-fetch sessionPOJO: ", sessionPOJO)
 
             // LAST NIGHT SLEEPILY TRYING TO CHAIN FETCHES BEFORE REALIZING THIS ISN'T WHAT I WANT
             // console.log("sessionPOJO.id: ", sessionPOJO.id, "sessionPOJO: ", sessionPOJO)
@@ -49,8 +54,7 @@ class MeditationCreatorForm extends React.Component {
             // })
 
         })
-        
-        // wipes state clean after form submitted
+        // wipes form and state clean
         this.setState({
             id: null,
             start_time: "",
@@ -65,7 +69,8 @@ class MeditationCreatorForm extends React.Component {
     render() {
         const { summary } = this.state
         // console.log(this.props.meditationState)
-
+        // console.log(this.props.userID)
+        
         return(
             <Form onSubmit={this.handleFormSubmit}>
                 <Form.TextArea
