@@ -38,10 +38,9 @@ class MeditationContainer extends React.Component {
     showModal = () => { this.setState({ show: true})  }
     hideModal = () => { this.setState({ show: false}) }
 
-    handleInput = event => { this.setState({ minutes: parseInt(event.target.value) }) }
+    handleInput = event => { this.setState({ minutes: event.target.value }) }
     toggleTimerStartState = () => { this.setState({timerStarted: !this.state.timerStarted}) } // this looks like it could be a problem
     pauseCountDown = () => { clearInterval(this.intervalHandle) }
-
 
     // setState() is not fucking my shit up anymore; it's all about setState(ƒ) now baby
     resetCountDown = () => {
@@ -65,7 +64,7 @@ class MeditationContainer extends React.Component {
 
         // if there isn't a non-zero value in chosenDuration, assign one
         if (!this.state.chosenDuration) {
-            this.setState( state =>  ( {...state, chosenDuration: parseInt(this.state.minutes) }))
+            this.setState( state =>  ( {...state, chosenDuration: parseFloat(this.state.minutes) }))
         }
         
         // Fixed
@@ -73,7 +72,7 @@ class MeditationContainer extends React.Component {
             this.setState( state => ({...state, session: {...state.session, start_time: new Date() }})   )
         }
         this.intervalHandle = setInterval(this.tick, 1000);
-        this.secondsRemaining = (parseInt(minutes) * 60) + parseInt(seconds)
+        this.secondsRemaining = (parseFloat(minutes) * 60) + parseInt(seconds)
     }
 
     tick = () => {
@@ -81,6 +80,7 @@ class MeditationContainer extends React.Component {
         let sec = this.secondsRemaining - (min * 60)
         this.setState({ minutes: min, seconds: sec })
 
+        // this looks like it should be using functional setState
         if (sec < 10) { this.setState({ seconds: '0' + this.state.seconds }) }
 
         if (min === 0 && sec === 0) {
