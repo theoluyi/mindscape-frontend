@@ -10,6 +10,7 @@ import SummaryModal from './SummaryModal'
 import MeditationCreatorForm from '../MeditationComponents/MeditationCreatorForm'
 import '../App.css'
 import PerceptionCreatorForm from './PerceptionCreatorForm'
+import PerceptionContainer from './PerceptionContainer'
 
 class MeditationContainer extends React.Component {
     state = {
@@ -37,7 +38,7 @@ class MeditationContainer extends React.Component {
      */
 
     addOnePerception = (perception) => {
-        console.log(`adding one perception called ${perception} in the MeditationContainer`)
+        console.log(`${perception} perceived (in the MeditationContainer)`)
         let copyOfState = {...this.state}
         copyOfState.session.perceptions.push(perception)
         this.setState(copyOfState)
@@ -107,6 +108,8 @@ class MeditationContainer extends React.Component {
                 <PerceptionCreatorForm
                     addOnePerception={this.addOnePerception}
                 />
+                <br/><br/><br/>
+                <PerceptionContainer perceptions={this.state.session.perceptions} />
                 <br/> <br/> <br/> <br/> <br/> <br/>
                 <TimerInput 
                     minutes={this.state.minutes}
