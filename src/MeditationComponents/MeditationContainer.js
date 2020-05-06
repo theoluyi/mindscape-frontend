@@ -13,7 +13,7 @@ import '../App.css'
 class MeditationContainer extends React.Component {
     state = {
         seconds: '00',
-        minutes: '10',
+        minutes: 10,
         timerStarted: false,
         chosenDuration: 0,
         show: false,
@@ -28,97 +28,53 @@ class MeditationContainer extends React.Component {
         }
     }
 
+    /** 
+     * Dumb things to watch out for:
+     * I added parseInt to the handleInput ƒ below
+     * after I had finally fixed that buggy crap
+     * I may have changed one other thing but my brain's not working now.
+     */
+
     showModal = () => { this.setState({ show: true})  }
     hideModal = () => { this.setState({ show: false}) }
 
-    handleInput = event => { this.setState({ minutes: event.target.value }) }
-    toggleTimerStartState = () => { this.setState({timerStarted: !this.state.timerStarted}) }
+    handleInput = event => { this.setState({ minutes: parseInt(event.target.value) }) }
+    toggleTimerStartState = () => { this.setState({timerStarted: !this.state.timerStarted}) } // this looks like it could be a problem
     pauseCountDown = () => { clearInterval(this.intervalHandle) }
 
 
-    //-------------------------------------------------------------------------------------
+    // setState() is not fucking my shit up anymore; it's all about setState(ƒ) now baby
     resetCountDown = () => {
         this.pauseCountDown()
-
-        let newState = {
-            ...this.state,
-            seconds: '00',
-            minutes: this.state.chosenDuration,
-            timerStarted: false,
-            chosenDuration: 0,
-            session: {
-                ...this.state.session,
-                start_time: ''}
-        }
-        this.setState(newState)
+        this.setState( state => (
+            {   ...state,
+                seconds: '00',
+                minutes: state.chosenDuration,
+                timerStarted: false,
+                chosenDuration: 0,
+                session: {
+                    ...state.session,
+                    start_time: ''}
+            }
+        ))
     }
 
-
-
-
-    setStateFunction = (state, props) => {
-        const newState = {...this.state, chosenDuration: parseInt(this.state.minutes)}
-        console.log(newState)
-        return newState
-    }
-
-    // BUG IS IN HERE I'M SURE OF IT I THINK
-    // setState is fucking my shit up
+    // setState() is not fucking my shit up anymore; it's all about setState(ƒ) now baby
     startCountDown = () => {
         let {minutes, seconds} = this.state
-        console.log("this.state.chosenDuration truthy/falsey: ", !!this.state.chosenDuration)
 
-        // what is this code block meant to do?
-        // if chosenDuration has not been assigned a truthy value (any number above 0 or non-empty string)
-        // then this will run. it will create a variable and assign that to be the value of minutes when the timer is first started
-        // let's console.log that – newChosenDuration and see if it's working
-
-        if (!this.state.chosenDuration) { // !!!
-            // let newChosenDuration = parseInt(this.state.minutes) // makes it a number
-            // let mehState = {
-            //     ...this.state,
-            //     seconds: 'god is testing you',
-            //     chosenDuration: newChosenDuration
-            // }
-            // this.setState(mehState)
-            // console.log("state", this.state)
-            // console.log("mehState", mehState)
-
-            this.setState(this.setStateFunction)
+        // if there isn't a non-zero value in chosenDuration, assign one
+        if (!this.state.chosenDuration) {
+            this.setState( state =>  ( {...state, chosenDuration: parseInt(this.state.minutes) }))
         }
         
-        // probably wanna do whatever i did with chosenDuration
-        // which might include resetting it to empty if user hits reset button
-        if (!this.state.session.start_time) { // !!!
-            let newState = {
-                ...this.state, 
-                session: {
-                    ...this.state.session,
-                    start_time: new Date()
-                }
-            }
-            this.setState(newState)
+        // Fixed
+        if (!this.state.session.start_time) {
+            this.setState( state => ({...state, session: {...state.session, start_time: new Date() }})   )
         }
-
         this.intervalHandle = setInterval(this.tick, 1000);
         this.secondsRemaining = (parseInt(minutes) * 60) + parseInt(seconds)
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     tick = () => {
         let min = Math.floor(this.secondsRemaining / 60)
@@ -136,7 +92,6 @@ class MeditationContainer extends React.Component {
     }
 
     render() {
-
         return (
             <div>
                 <h1>Meditate</h1>
