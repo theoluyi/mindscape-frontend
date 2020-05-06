@@ -29,7 +29,7 @@ class MeditationCreatorForm extends React.Component {
                 'Content-type': 'application/json',
                 'Authorization': `bearer ${this.props.token}`
             },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify({...this.props.meditationState.session, summary: this.state.summary})
         })
         .then(r => r.json())
         .then(sessionPOJO => {
@@ -66,6 +66,8 @@ class MeditationCreatorForm extends React.Component {
 
     render() {
         const { summary } = this.state
+        // console.log(this.props.meditationState)
+
         return(
             <Form onSubmit={this.handleFormSubmit}>
                 <Form.TextArea
