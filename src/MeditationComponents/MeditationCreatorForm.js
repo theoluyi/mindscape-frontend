@@ -33,6 +33,20 @@ class MeditationCreatorForm extends React.Component {
         .then(r => r.json())
         .then(sessionPOJO => {
             this.props.createNewSession(sessionPOJO)
+            console.log("sessionPOJO.id: ", sessionPOJO.id, "sessionPOJO: ", sessionPOJO)
+
+        fetch('http://localhost:4000/perceptions', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `bearer ${this.props.token}`
+            },
+            body: JSON.stringify({
+                ...this.props.meditationState.session, 
+                perceptions: this.props.meditationState.perceptions
+            })
+        })
+
         })
         
         // wipes state clean after form submitted
