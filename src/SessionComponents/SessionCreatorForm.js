@@ -13,7 +13,6 @@ const durationOptions = [
 
 class SessionCreatorForm extends React.Component {
     state = {
-        id: null,
         start_time: "",
         end_time: null,
         duration: 0,
@@ -45,6 +44,7 @@ class SessionCreatorForm extends React.Component {
 
     handleFormSubmit = (e, unknownObj) => {
         e.preventDefault()
+        let statePlusUserID = {...this.state, user_id: this.props.user.id}
         console.log("Form Submitted in SessionCreatorForm component")
 
         fetch('http://localhost:4000/sessions', {
@@ -53,7 +53,8 @@ class SessionCreatorForm extends React.Component {
                 'Content-type': 'application/json',
                 'Authorization': `bearer ${this.props.token}`
             },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify(statePlusUserID)
+            // body: JSON.stringify(this.state)
         })
         .then(r => r.json())
         .then(sessionPOJO => {
@@ -61,7 +62,7 @@ class SessionCreatorForm extends React.Component {
         })
 
         this.setState({
-            id: null,
+            // id: null,
             start_time: "",
             end_time: null,
             duration: 0,
@@ -73,7 +74,7 @@ class SessionCreatorForm extends React.Component {
 
     render() {
         const { start_time, duration, summary } = this.state
-
+        console.log("this.props.user.id: ", this.props.user.id)
         return(
             <Form onSubmit={this.handleFormSubmit}>
                 <Form.Group widths='equal'>

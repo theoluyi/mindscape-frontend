@@ -30,7 +30,9 @@ class PerceptionCreatorForm extends React.Component {
                         name='perception' 
                         // label='What perceptions are arising? 🧐' 
                         // placeholder='Perceptions naturally arise in the mind. Noting them brings insight' 
-                        // align='left'
+                        align='left'
+                        // textAlign="center"
+                        size="large"
                         value={this.state.perception}
                         onChange={this.handleInput}
                         autoComplete='off'

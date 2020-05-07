@@ -20,6 +20,17 @@ class App extends React.Component {
     token: ""
   }
 
+  clearAppState = () => {
+    this.setState({
+      user: {
+        id: 0,
+        username: "",
+        sessions: []
+      },
+      token: ""
+    })
+  }
+
   componentDidMount(){
     if (localStorage.getItem('token')) {
       fetch('http://localhost:4000/persist', {
@@ -105,7 +116,7 @@ class App extends React.Component {
     
     return (
     <div className='App'>
-      <NavBar/>
+      <NavBar clearAppState={this.clearAppState} />
       <Switch>
         <Route path="/" exact> <Welcome username={this.state.user.username}/> </Route>
         <Route path="/meditate"> 
