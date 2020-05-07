@@ -105,7 +105,9 @@ class MeditationContainer extends React.Component {
                 />
                 <br/><br/><br/>
                 <PerceptionContainer perceptions={this.state.session.perceptions} />
-                {/* <br/> <br/> <br/> <br/> <br/> <br/> */}
+                <br/> <br/> <br/> <br/> <br/> <br/>
+                <br/> <br/> <br/> <br/> <br/> <br/>
+                <br/> <br/>
                 <br/>
                 
                 <Menu compact>
