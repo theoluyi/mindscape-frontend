@@ -116,7 +116,10 @@ class App extends React.Component {
     
     return (
     <div className='App'>
+    <header>
       <NavBar clearAppState={this.clearAppState} />
+    </header>
+      <main>
       <Switch>
         <Route path="/" exact> <Welcome username={this.state.user.username}/> </Route>
         <Route path="/meditate"> 
@@ -139,6 +142,10 @@ class App extends React.Component {
         <Route path="/login" render={ this.renderForm } />
         <Route path="/register" render={ this.renderForm } />
       </Switch>
+      </main>
+      <footer>
+        Hello I'm the footer
+      </footer>
     </div>
     )
   }
