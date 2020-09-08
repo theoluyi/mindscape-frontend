@@ -1,5 +1,33 @@
-.App {
+/* 
+flexbox tutorial I'm looking at
+https://webdesign.tutsplus.com/tutorials/how-to-build-a-full-screen-responsive-page-with-flexbox--cms-32086 */
+
+.wrapper {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+/* creates white space around header and elongates the
+footer a bit */
+.wrapper > * {
+  padding: 20px;
+  background-color: #001f3f;
+}
+
+.page-main {
+  flex-grow: 1;
+}
+main {
+  background-color: #0074D9;
+  background: -webkit-linear-gradient(left, #0074D9, #7FDBFF);
+}
+
+footer {
+  background-color: #001f3f;
+  flex-basis: auto;
 }
 
 .modal {
@@ -27,6 +55,49 @@
 
 .display-none {
   display: none;
+}
+
+
+
+/* nav styling transplanted from index.css */
+ul.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #001f3f;
+}
+
+ul.nav li {
+  float: left;
+}
+
+ul.nav li a {
+  display: block;
+  color: #0074D9;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.nav li a:hover {
+  background-color: #111;
+}
+
+
+
+/* fancy gradient for Welcome to Mindscape text */
+#header {
+  background: red;
+  background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
+  background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+  background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+  background: linear-gradient(to right, blue, violet, orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
 }
 
 

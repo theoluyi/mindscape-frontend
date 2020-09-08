@@ -20,6 +20,7 @@ class App extends React.Component {
     token: ""
   }
 
+  // helper method to wipe clean the app state slate
   clearAppState = () => {
     this.setState({
       user: {
@@ -42,7 +43,10 @@ class App extends React.Component {
       .then(this.handleResponse)
     }
   }
-
+  
+  // called by componentDidMount, handleLoginSubmit, handleRegisterSubmit to either:
+  // A) set plant the user's token in localStorage and redirect to the meditate tab if user is valid or
+  // B) show error message
   handleResponse = (resp) => {
     if (resp.user) {
       localStorage.token = resp.token
@@ -115,11 +119,11 @@ class App extends React.Component {
     // console.log(this.state)
     
     return (
-    <div className='App'>
-    <header>
+    <div className='wrapper'>
+    <header className='page-header'>
       <NavBar clearAppState={this.clearAppState} />
     </header>
-      <main>
+      <main className='page-main'>
       <Switch>
         <Route path="/" exact> <Welcome username={this.state.user.username}/> </Route>
         <Route path="/meditate"> 
@@ -143,7 +147,7 @@ class App extends React.Component {
         <Route path="/register" render={ this.renderForm } />
       </Switch>
       </main>
-      <footer>
+      <footer className='page-footer'>
         Hello I'm the footer
       </footer>
     </div>
