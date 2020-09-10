@@ -97,8 +97,7 @@ class MeditationContainer extends React.Component {
 
     render() {
         return (
-            <div className='meditation-container'>
-                <Container>
+                <div className='meditation-container'>
                 <br/>
                 <PerceptionCreatorForm
                     addOnePerception={this.addOnePerception}
@@ -150,9 +149,7 @@ class MeditationContainer extends React.Component {
                         <br/>
                         </SummaryModal>
                     </main>
-                </Container>
-
-            </div>
+                </div>
         )
     }
 }

@@ -39,12 +39,17 @@ footer {
   max-width: 50%;
 } */
 
-.meditation-container {
-  max-width: 60vh;
+/* .meditation-container {
+  padding-left: 50px;
+  padding-right: 50px;
   background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+} */
+
+.meditation-container {
+  background-color: tan;
 }
 
 .modal {
