@@ -92,10 +92,12 @@ which includes just the */
   min-height: 10vh;
 }
 
+/* this is where all your perceptions are logged as bubbles */
 .your-mindscape{
   padding-top: 40px;
   padding-left: 40px;
   padding-right: 40px;
+  line-height: 400%;
 }
 
 .modal {
