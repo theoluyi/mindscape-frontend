@@ -22,8 +22,8 @@ class PerceptionCreatorForm extends React.Component {
     render() {
         return(
 
-            <div> 
-            <Container>
+            <div className='perception-input'> 
+
             <h1>Where is your mind?</h1>                
             <Form onSubmit={this.handleFormSubmit}>
                     <Form.Input
@@ -39,7 +39,6 @@ class PerceptionCreatorForm extends React.Component {
                     />
                     <Form.Button> Note your perception </Form.Button>
                 </Form>
-            </Container>
             </div>
         )
     }

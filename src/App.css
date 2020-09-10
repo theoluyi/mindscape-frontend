@@ -9,9 +9,7 @@ https://webdesign.tutsplus.com/tutorials/how-to-build-a-full-screen-responsive-p
   min-height: 100vh;
 }
 
-
-/* creates white space around header and elongates the
-footer a bit */
+/* creates white space around header and elongates the footer a bit */
 .wrapper > * {
   padding: 20px;
   background-color: #001f3f;
@@ -23,11 +21,30 @@ footer a bit */
 main {
   background-color: #0074D9;
   background: -webkit-linear-gradient(left, #0074D9, #7FDBFF);
+  --content-width: 400px;
 }
 
 footer {
   background-color: #001f3f;
   flex-basis: auto;
+}
+
+.meditation-menu {
+  color: black;
+}
+
+/* this is messing up the perception input, it's pushing it to the left side
+  Im going to try targeting the meditation-container instead */
+/* .perception-input {
+  max-width: 50%;
+} */
+
+.meditation-container {
+  max-width: 60vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal {

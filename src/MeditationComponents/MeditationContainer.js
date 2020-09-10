@@ -97,7 +97,7 @@ class MeditationContainer extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='meditation-container'>
                 <Container>
                 <br/>
                 <PerceptionCreatorForm
@@ -106,11 +106,9 @@ class MeditationContainer extends React.Component {
                 <br/><br/><br/>
                 <PerceptionContainer perceptions={this.state.session.perceptions} />
                 <br/> <br/> <br/> <br/> <br/> <br/>
-                <br/> <br/> <br/> <br/> <br/> <br/>
-                <br/> <br/>
-                <br/>
+                <br/> <br/> <br/>
                 
-                <Menu compact>
+                <Menu compact className='meditation-menu'>
                     <TimerInput 
                         minutes={this.state.minutes}
                         handleInput={this.handleInput}
