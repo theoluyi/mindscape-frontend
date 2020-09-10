@@ -148,7 +148,7 @@ class App extends React.Component {
       </Switch>
       </main>
       <footer className='page-footer'>
-        Hello I'm the footer
+        Created by Theo Carney
       </footer>
     </div>
     )

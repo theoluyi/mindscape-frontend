@@ -19,18 +19,20 @@ https://webdesign.tutsplus.com/tutorials/how-to-build-a-full-screen-responsive-p
   flex-grow: 1;
 }
 main {
+  color:  #001f3f;
   background-color: #0074D9;
   background: -webkit-linear-gradient(left, #0074D9, #7FDBFF);
-  --content-width: 400px;
 }
 
 footer {
+  color: #0074D9;
   background-color: #001f3f;
   flex-basis: auto;
 }
 
 .meditation-menu {
-  color: black;
+  color:   #001f3f;
+  min-width: 80vh;
 }
 
 /* this is messing up the perception input, it's pushing it to the left side
@@ -48,8 +50,52 @@ footer {
   justify-content: center;
 } */
 
+/* this is the entire interactive meditation page */
 .meditation-container {
-  background-color: tan;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 19%;
+  padding-right: 19%;
+}
+
+/* this is the upper half of the interactive meditation page
+which includes the <h1> Where is your mind? </h1>
+the input []
+the note your perception button
+Your Mindscape heading
+and container for the thoughts
+ */
+
+ /* QQ
+ min-height: 70vh is a nice kludge for now to put the menu/timer to the bottom since I don't want to spend
+ 3 hours right now learning flexbox / flexbox seems to be not working how I expect
+ it'd be nice to figure this out later but this project is getting a bit old and it's
+ already so mcguyvered that I'd rather start something new and practice redux than continue
+ patching this thing together. I think it looks presentable at this point
+ gotta keep learning CSS though, it's not hard, it's just there's a lot to know and remember
+ which is hard in its own way*/
+.upper-half {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /* background-color: white; */
+  min-height: 70vh;
+}
+
+/* messing around with flexbox here QQ */
+/* this is the lower half of the meditation page,
+which includes just the */
+.lower-half {
+  /* display: flex;
+  justify-content: center; */
+  padding-bottom: 10px;
+  /* background-color: black; */
+  min-height: 10vh;
+}
+
+.your-mindscape{
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .modal {

@@ -98,57 +98,60 @@ class MeditationContainer extends React.Component {
     render() {
         return (
                 <div className='meditation-container'>
-                <br/>
-                <PerceptionCreatorForm
-                    addOnePerception={this.addOnePerception}
-                />
-                <br/><br/><br/>
-                <PerceptionContainer perceptions={this.state.session.perceptions} />
-                <br/> <br/> <br/> <br/> <br/> <br/>
-                <br/> <br/> <br/>
-                
-                <Menu compact className='meditation-menu'>
-                    <TimerInput 
-                        minutes={this.state.minutes}
-                        handleInput={this.handleInput}
-                    />
-                    
-                    <Timer 
-                    minutes={this.state.minutes} 
-                    seconds={this.state.seconds}
-                    />
-                    <StartButton
-                    startCountDown={this.startCountDown}
-                    pauseCountDown={this.pauseCountDown}
-                    toggleTimerStartState={this.toggleTimerStartState}
-                    timerStarted={this.state.timerStarted}
-                    />
-                    <ResetButton
-                    resetCountDown={this.resetCountDown}
-                    />
-                    <Button 
-                        type="button"
-                        onClick={this.showModal}
-                    >
-                        Save session
-                    </Button>
-                </Menu>
-                
-                <br/> <br/>
-                    <main>
-                        <SummaryModal 
-                            show={this.state.show} 
-                            handleClose={this.hideModal} 
-                        >
-                        <MeditationCreatorForm
-                            userID={this.props.userID}
-                            meditationState={this.state}
-                            createNewSession={this.props.createNewSession}
-                            token={this.props.token}
+                    <div className='upper-half'>
+                        <PerceptionCreatorForm
+                            addOnePerception={this.addOnePerception}
                         />
-                        <br/>
-                        </SummaryModal>
-                    </main>
+                        {/* <br/><br/><br/> */}
+                        <PerceptionContainer perceptions={this.state.session.perceptions} />
+                        {/* <br/> <br/> <br/> <br/> <br/> <br/> */}
+                        {/* <br/> <br/> <br/> */}
+                    </div>
+                    
+                    <div className='lower-half'>
+                        <Menu compact className='meditation-menu'>
+                            <TimerInput 
+                                minutes={this.state.minutes}
+                                handleInput={this.handleInput}
+                            />
+                            
+                            <Timer 
+                            minutes={this.state.minutes} 
+                            seconds={this.state.seconds}
+                            />
+                            <StartButton
+                            startCountDown={this.startCountDown}
+                            pauseCountDown={this.pauseCountDown}
+                            toggleTimerStartState={this.toggleTimerStartState}
+                            timerStarted={this.state.timerStarted}
+                            />
+                            <ResetButton
+                            resetCountDown={this.resetCountDown}
+                            />
+                            <Button 
+                                type="button"
+                                onClick={this.showModal}
+                            >
+                                Save session
+                            </Button>
+                        </Menu>
+                    </div>
+                        
+                        <br/> <br/>
+                            <main>
+                                <SummaryModal 
+                                    show={this.state.show} 
+                                    handleClose={this.hideModal} 
+                                >
+                                <MeditationCreatorForm
+                                    userID={this.props.userID}
+                                    meditationState={this.state}
+                                    createNewSession={this.props.createNewSession}
+                                    token={this.props.token}
+                                />
+                                <br/>
+                                </SummaryModal>
+                            </main>
                 </div>
         )
     }
