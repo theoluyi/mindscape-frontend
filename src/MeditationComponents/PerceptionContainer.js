@@ -1,11 +1,11 @@
 import React from 'react'
-import {Container} from 'semantic-ui-react'
+import {Container, Button} from 'semantic-ui-react'
 
 
 const PerceptionContainer = (props) => {
     
     let perceptionsJSX = props.perceptions.map( (perception, index) => 
-        <span key={index}> {perception}, </span>
+        <span key={index}> <Button>{perception}</Button></span>
     )
 
     return (
