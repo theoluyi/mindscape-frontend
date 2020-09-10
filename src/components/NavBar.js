@@ -1,11 +1,13 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom'
 
-const NavBar = () => {
+const NavBar = (props) => {
 
   const logout = () => {
     console.log("logout button pressed")
     localStorage.clear()
+    props.clearAppState()
+
     // this step still requires a refresh but for now that's good enough
     // this feature is more for easy testing not for UI
   }

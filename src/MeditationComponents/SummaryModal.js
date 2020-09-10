@@ -8,7 +8,7 @@ const SummaryModal = ({ handleClose, show, children }) => {
       <div className={showHideClassName}>
         <section className="modal-main">
           {children}
-          <Button onClick={handleClose}>Exit without saving</Button>
+          <Button onClick={handleClose}>Exit</Button>
         </section>
       </div>
     );

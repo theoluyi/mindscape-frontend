@@ -20,6 +20,18 @@ class App extends React.Component {
     token: ""
   }
 
+  // helper method to wipe clean the app state slate
+  clearAppState = () => {
+    this.setState({
+      user: {
+        id: 0,
+        username: "",
+        sessions: []
+      },
+      token: ""
+    })
+  }
+
   componentDidMount(){
     if (localStorage.getItem('token')) {
       fetch('http://localhost:4000/persist', {
@@ -31,7 +43,10 @@ class App extends React.Component {
       .then(this.handleResponse)
     }
   }
-
+  
+  // called by componentDidMount, handleLoginSubmit, handleRegisterSubmit to either:
+  // A) set plant the user's token in localStorage and redirect to the meditate tab if user is valid or
+  // B) show error message
   handleResponse = (resp) => {
     if (resp.user) {
       localStorage.token = resp.token
@@ -101,13 +116,19 @@ class App extends React.Component {
   }
 
   render() {
+    // console.log(this.state)
+    
     return (
-    <div className='App'>
-      <NavBar/>
+    <div className='wrapper'>
+    <header className='page-header'>
+      <NavBar clearAppState={this.clearAppState} />
+    </header>
+      <main className='page-main'>
       <Switch>
         <Route path="/" exact> <Welcome username={this.state.user.username}/> </Route>
         <Route path="/meditate"> 
           <MeditationContainer
+            userID={this.state.user.id}
             createNewSession={this.createNewSession}
             token={this.state.token}
           /> 
@@ -125,6 +146,10 @@ class App extends React.Component {
         <Route path="/login" render={ this.renderForm } />
         <Route path="/register" render={ this.renderForm } />
       </Switch>
+      </main>
+      <footer className='page-footer'>
+        Created by Theo Carney
+      </footer>
     </div>
     )
   }

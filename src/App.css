@@ -1,8 +1,176 @@
-.App {
+/* 
+flexbox tutorial I'm looking at
+https://webdesign.tutsplus.com/tutorials/how-to-build-a-full-screen-responsive-page-with-flexbox--cms-32086 */
+
+.wrapper {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.App-logo {
+/* creates white space around header and elongates the footer a bit */
+.wrapper > * {
+  padding: 20px;
+  background-color: #001f3f;
+}
+
+.page-main {
+  flex-grow: 1;
+}
+main {
+  color:  #001f3f;
+  background-color: #0074D9;
+  background: -webkit-linear-gradient(left, #0074D9, #7FDBFF);
+}
+
+footer {
+  color: #0074D9;
+  background-color: #001f3f;
+  flex-basis: auto;
+}
+
+.meditation-menu {
+  color:   #001f3f;
+  min-width: 80vh;
+}
+
+/* this is messing up the perception input, it's pushing it to the left side
+  Im going to try targeting the meditation-container instead */
+/* .perception-input {
+  max-width: 50%;
+} */
+
+/* .meditation-container {
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* this is the entire interactive meditation page */
+.meditation-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 19%;
+  padding-right: 19%;
+}
+
+/* this is the upper half of the interactive meditation page
+which includes the <h1> Where is your mind? </h1>
+the input []
+the note your perception button
+Your Mindscape heading
+and container for the thoughts
+ */
+
+ /* QQ
+ min-height: 70vh is a nice kludge for now to put the menu/timer to the bottom since I don't want to spend
+ 3 hours right now learning flexbox / flexbox seems to be not working how I expect
+ it'd be nice to figure this out later but this project is getting a bit old and it's
+ already so mcguyvered that I'd rather start something new and practice redux than continue
+ patching this thing together. I think it looks presentable at this point
+ gotta keep learning CSS though, it's not hard, it's just there's a lot to know and remember
+ which is hard in its own way*/
+.upper-half {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /* background-color: white; */
+  min-height: 70vh;
+}
+
+/* messing around with flexbox here QQ */
+/* this is the lower half of the meditation page,
+which includes just the */
+.lower-half {
+  /* display: flex;
+  justify-content: center; */
+  padding-bottom: 10px;
+  /* background-color: black; */
+  min-height: 10vh;
+}
+
+.your-mindscape{
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-main {
+  position:fixed;
+  background: white;
+  width: 80%;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+
+
+/* nav styling transplanted from index.css */
+ul.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #001f3f;
+}
+
+ul.nav li {
+  float: left;
+}
+
+ul.nav li a {
+  display: block;
+  color: #0074D9;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.nav li a:hover {
+  background-color: #111;
+}
+
+
+
+/* fancy gradient for Welcome to Mindscape text */
+#header {
+  background: red;
+  background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
+  background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+  background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+  background: linear-gradient(to right, blue, violet, orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+}
+
+
+/* REMOVED CREATE-REACT-APP DEFAULT CSS */
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,31 +203,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width:100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.modal-main {
-  position:fixed;
-  background: white;
-  width: 80%;
-  height: auto;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-}
-
-.display-block {
-  display: block;
-}
-
-.display-none {
-  display: none;
-}
+} */

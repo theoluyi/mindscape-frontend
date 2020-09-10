@@ -3,13 +3,14 @@ import {Container} from 'semantic-ui-react'
 
 
 const PerceptionContainer = (props) => {
-    console.log("PerceptionContainer's perceptions: ", props.perceptions)
     
-    let perceptionsJSX = props.perceptions.map( (perception, index) => <span key={index}> {perception}, </span>)
+    let perceptionsJSX = props.perceptions.map( (perception, index) => 
+        <span key={index}> {perception}, </span>
+    )
 
     return (
-        <div>
-            <h1>Your Evolving Mindscape</h1>
+        <div className='your-mindscape'>
+            <h1>Your Mindscape</h1>
             <Container textAlign='justified'>
                 {perceptionsJSX}
             </Container>

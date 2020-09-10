@@ -5,10 +5,11 @@ import TimerInput from './TimerComponents/TimerInput'
 import Timer from './TimerComponents/Timer'
 import StartButton from './TimerComponents/StartButton'
 import ResetButton from './TimerComponents/ResetButton'
-import {Button} from 'semantic-ui-react'
+import {Button, Container, Menu} from 'semantic-ui-react'
 import SummaryModal from './SummaryModal'
 import MeditationCreatorForm from '../MeditationComponents/MeditationCreatorForm'
 import '../App.css'
+// import 'semantic-ui-css/semantic.min.css';
 import PerceptionCreatorForm from './PerceptionCreatorForm'
 import PerceptionContainer from './PerceptionContainer'
 
@@ -20,7 +21,6 @@ class MeditationContainer extends React.Component {
         chosenDuration: 0,
         show: false,
         session: {
-            id: null,
             start_time: "",
             end_time: null,
             duration: 0,
@@ -29,13 +29,6 @@ class MeditationContainer extends React.Component {
             perceptions: []
         }
     }
-
-    /** 
-     * Dumb things to watch out for:
-     * I added parseInt to the handleInput ƒ below
-     * after I had finally fixed that buggy crap
-     * I may have changed one other thing but my brain's not working now.
-     */
 
     addOnePerception = (perception) => {
         console.log(`${perception} perceived (in the MeditationContainer)`)
@@ -48,10 +41,11 @@ class MeditationContainer extends React.Component {
     hideModal = () => { this.setState({ show: false}) }
 
     handleInput = event => { this.setState({ minutes: event.target.value }) }
-    toggleTimerStartState = () => { this.setState({timerStarted: !this.state.timerStarted}) } // this looks like it could be a problem
+    toggleTimerStartState = () => { this.setState({timerStarted: !this.state.timerStarted}) }  
+    // toggleTimerStartState is not ƒ setState but hasn't been a problem so far
     pauseCountDown = () => { clearInterval(this.intervalHandle) }
 
-    // setState() is not fucking my shit up anymore; it's all about setState(ƒ) now baby
+    // it's all about setState(ƒ) baby
     resetCountDown = () => {
         this.pauseCountDown()
         this.setState( state => (
@@ -67,7 +61,7 @@ class MeditationContainer extends React.Component {
         ))
     }
 
-    // setState() is not fucking my shit up anymore; it's all about setState(ƒ) now baby
+    // it's all about setState(ƒ) baby
     startCountDown = () => {
         let {minutes, seconds} = this.state
 
@@ -103,54 +97,62 @@ class MeditationContainer extends React.Component {
 
     render() {
         return (
-            <div>
-                <br/>
-                <PerceptionCreatorForm
-                    addOnePerception={this.addOnePerception}
-                />
-                <br/><br/><br/>
-                <PerceptionContainer perceptions={this.state.session.perceptions} />
-                <br/> <br/> <br/> <br/> <br/> <br/>
-                <TimerInput 
-                    minutes={this.state.minutes}
-                    handleInput={this.handleInput}
-                />
-                <Timer 
-                    minutes={this.state.minutes} 
-                    seconds={this.state.seconds}
-                />
-                <StartButton
-                    startCountDown={this.startCountDown}
-                    pauseCountDown={this.pauseCountDown}
-                    toggleTimerStartState={this.toggleTimerStartState}
-                    timerStarted={this.state.timerStarted}
-                />
-                <br/>
-                <ResetButton
-                    resetCountDown={this.resetCountDown}
-                />
-                <br/><br/><br/>
-            <main>
-                <h1>Save this session</h1>
-                    <Button 
-                        type="button"
-                        onClick={this.showModal}
-                    >
-                        Open
-                    </Button>
-                    <SummaryModal 
-                        show={this.state.show} 
-                        handleClose={this.hideModal} 
-                    >
-                        <MeditationCreatorForm
-                            meditationState={this.state}
-                            createNewSession={this.props.createNewSession}
-                            token={this.props.token}
+                <div className='meditation-container'>
+                    <div className='upper-half'>
+                        <PerceptionCreatorForm
+                            addOnePerception={this.addOnePerception}
                         />
-                        <br/>
-                    </SummaryModal>
-            </main>
-            </div>
+                        {/* <br/><br/><br/> */}
+                        <PerceptionContainer perceptions={this.state.session.perceptions} />
+                        {/* <br/> <br/> <br/> <br/> <br/> <br/> */}
+                        {/* <br/> <br/> <br/> */}
+                    </div>
+                    
+                    <div className='lower-half'>
+                        <Menu compact className='meditation-menu'>
+                            <TimerInput 
+                                minutes={this.state.minutes}
+                                handleInput={this.handleInput}
+                            />
+                            
+                            <Timer 
+                            minutes={this.state.minutes} 
+                            seconds={this.state.seconds}
+                            />
+                            <StartButton
+                            startCountDown={this.startCountDown}
+                            pauseCountDown={this.pauseCountDown}
+                            toggleTimerStartState={this.toggleTimerStartState}
+                            timerStarted={this.state.timerStarted}
+                            />
+                            <ResetButton
+                            resetCountDown={this.resetCountDown}
+                            />
+                            <Button 
+                                type="button"
+                                onClick={this.showModal}
+                            >
+                                Save session
+                            </Button>
+                        </Menu>
+                    </div>
+                        
+                        <br/> <br/>
+                            <main>
+                                <SummaryModal 
+                                    show={this.state.show} 
+                                    handleClose={this.hideModal} 
+                                >
+                                <MeditationCreatorForm
+                                    userID={this.props.userID}
+                                    meditationState={this.state}
+                                    createNewSession={this.props.createNewSession}
+                                    token={this.props.token}
+                                />
+                                <br/>
+                                </SummaryModal>
+                            </main>
+                </div>
         )
     }
 }
