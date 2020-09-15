@@ -163,7 +163,7 @@ ul.nav li a:hover {
 
 /* fancy gradient for Welcome to Mindscape text */
 #header {
-  color:  #001f3f;
+  color: #001f3f;
   font-size: 3rem;
 }
 
@@ -180,6 +180,12 @@ ul.nav li a:hover {
   padding-top: 5rem;
   text-align: justify;
   border: ;
+}
+
+#landscape {
+  border-style: solid;
+  border-color:  #001f3f;
+  border-width: 1rem;
 }
 
 
