@@ -104,7 +104,10 @@ class SessionCreatorForm extends React.Component {
                     value={summary}
                     onChange={this.handleSummaryChange}
                 />
-                <Form.Button>Add a session </Form.Button>
+                <Form.Button
+                    disabled={!localStorage.token}>
+                    Add a session 
+                </Form.Button>
             </Form>
         )
     }

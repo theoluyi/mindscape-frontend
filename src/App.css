@@ -165,13 +165,7 @@ ul.nav li a:hover {
 
 /* fancy gradient for Welcome to Mindscape text */
 #header {
-  background: red;
-  background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
-  background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
-  background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
-  background: linear-gradient(to right, blue, violet, orange);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color:  #001f3f;
   font-size: 3rem;
 }
 
