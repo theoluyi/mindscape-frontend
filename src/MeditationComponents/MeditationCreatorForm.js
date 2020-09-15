@@ -80,7 +80,7 @@ class MeditationCreatorForm extends React.Component {
                     value={summary}
                     onChange={this.handleSummaryChange}
                 />
-                <Form.Button>Save session </Form.Button>
+                <Form.Button disabled={!localStorage.token}>{localStorage.token? "Save session":"Sign in to save a session"} </Form.Button>
             </Form>
         )
     }

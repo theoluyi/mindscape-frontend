@@ -159,8 +159,6 @@ ul.nav li a:hover {
   background-color: #111;
 }
 
-
-
 /* fancy gradient for Welcome to Mindscape text */
 #header {
   color: #001f3f;
@@ -176,16 +174,33 @@ ul.nav li a:hover {
   text-align: justify;
   font-size: 1.2rem;
 }
+
+.about-text > figure > img {
+  border-style: solid;
+  border-color: black;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  font-size: small;
+  text-align: center;
+
+}
+
 .about-footnote {
-  padding-top: 5rem;
   text-align: justify;
-  border: ;
+  border-style: dashed;
+  border-width: .1rem;
+  padding: .8rem;
 }
 
 #landscape {
   border-style: solid;
   border-color:  #001f3f;
-  border-width: 1rem;
+  border-width: .8rem;
 }
 
 

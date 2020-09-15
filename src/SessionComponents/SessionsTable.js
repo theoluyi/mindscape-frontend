@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Table, Container } from 'semantic-ui-react'
+import { Header, Table, Container, Divider } from 'semantic-ui-react'
 import SessionCreatorForm from './SessionCreatorForm'
 
 const SessionsTable = (props) => {
@@ -58,7 +58,7 @@ const SessionsTable = (props) => {
         <Container>
         <div>
             <h1> {localStorage.token? String(props.user.username)+`'s ` + `Sessions` : `Please sign in to see your sessions`} </h1>
-
+            <Divider/>
             <SessionCreatorForm 
                 createNewSession={props.createNewSession} 
                 user={props.user}
