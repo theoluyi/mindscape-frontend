@@ -111,7 +111,8 @@ which includes just the */
 
 .modal-main {
   position:fixed;
-  background: #7FDBFF;
+  background: #376288;
+  /* background: #0074D9; */
   width: 80%;
   height: auto;
   top:50%;
