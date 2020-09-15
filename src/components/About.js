@@ -5,49 +5,20 @@ import {Container, Divider} from 'semantic-ui-react'
 const About = () => {
 return(
   <div>
-    <Container textAlign='justified' >
-        <br/>
+    <Container className='about-container'>
         <h1> About </h1>
         <Divider/>
-        <h3> Mindscape is a simple yet interactive meditation app designed to assist experienced
-        and novice meditators alike. It makes use of and enhances a fundamental and powerful meditation 
-        technique called "mental noting."
-        <br/><br/>
-        As with common types of meditation practice, to the meditate with Mindscape, the meditator first settles into a
-        relaxed but wakeful posture and choose a point of focus. Some people call this point of
-        focus a "homebase" or an "anchor." Common homebases include sounds in one's environment, 
-        the feeling of one's body (hot or cold temperatures, a pleasant breeze, body aches, neutral sensations), 
-        and of course, the breath (which itself can be noticed in different ways, i.e., changing temperature at the nostrils, 
-        rising and falling of the chest or belly). In any case, your homebase is the object of attention that
-        you return to when you notice your mind has wandered elsewhere.
-        <br/><br/>
-
-        Mental noting occurs in this transition. When the meditator notices that their mind has
-        wandered, rather than immediately trying to force their attention back to their homebase,
-        they pause for a moment to note what it was that captured their imagination.
-        The clawing itch, the funny meme so-and-so sent yesterday, the chore they forgot.
-        And they watch the sensation, thought, whatever object of attention, act out its mental scene.
-        Then they return to the homebase
-        <br/><br/>
-
-        Mindscape aims to facilitate this simple but subtle practice of noting by giving the meditator
-        a convenient way of noting down perceptions without interrupting their meditation. This can 
-        help the meditator start to notice more clearly what catches their attention and to what extent;
-        it is also practical since I often notice myself remembering items for my grocery list and other lists
-        while meditating, and want a convenient way to note these things without navigating away from my
-        meditation app and getting sucked into something else, and I assume I am not alone in this.
-
-        {/* <img src="../../public/mind_wandering_diagram.png">mind_wandering_diagram</img> */}
-        <br/><br/>
-        As you meditate, you'll notice your mind wander. When it does, see if can notice where
-        your mind has gone. What are you thinking about? Note this down in the app and hit enter
-        to log it as a 'perception.' Then return to your homebase. Then repeat. When you are done,
-        you can save your session and see all your perceptions saved as your own virtual Mindscape.
-        <br/><br/>
-
-        You can meditate with or without logging in, but if you want
-        to save your sessions you'll need to create an account.  
-        </h3>
+        <div className='about-text'>
+          <p>Mindscape is an interactive meditation app that allows meditators to jot down their passing thoughts while meditating and save them for later review. This will allow meditators to gain more insight into their internal “mindscape.” </p>
+          <p>The concept of Mindscape derives from a meditation technique called “mental noting.” Contrary to the common misconception of meditation as being about “clearing one’s mind of all thoughts,” arising thoughts are in fact a part of any meditation practice. </p>
+          <p>In common forms of meditation, when the meditator becomes aware that their mind has gotten hooked by a perception, they note or label the perception, and then return to their homebase.* While simple to explain, this mental process can be challenging to sustain in practice, since the mind tends to wander.</p>
+          <p>For this reason, Mindscape was created to make the process of noting more tangible. Physically noting down what has captured the meditator’s attention note only helps them to pause mindfully before returning to their homebase, but also relieves them of the compulsion to remember any significant thoughts they may have. This also facilitates their ability to transition from a state of mind-wandering back to mindful concentration on their homebase. </p>
+          <p>We hope that you benefit from using Mindscape and gain insight into your own inner mindscape. Wishing you a peaceful sit! </p>
+        </div>
+        <div className='about-footnote'>
+          <p> *Other sources may use terms like “point of focus” or “anchor” instead of homebase. Common choices of homebase include the breath, sounds in the environment, and sensations in the body.</p> 
+        </div>
+        
     </Container>
   </div>
 )

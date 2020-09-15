@@ -52,7 +52,6 @@ footer {
 
 /* this is the entire interactive meditation page */
 .meditation-container {
-  padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 19%;
   padding-right: 19%;
@@ -75,8 +74,6 @@ and container for the thoughts
  gotta keep learning CSS though, it's not hard, it's just there's a lot to know and remember
  which is hard in its own way*/
 .upper-half {
-  padding-top: 5px;
-  padding-bottom: 5px;
   /* background-color: white; */
   min-height: 70vh;
 }
@@ -118,10 +115,10 @@ which includes just the */
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
-  padding-top: 40px;
-  padding-bottom: 40px;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-top: 9rem;
+  padding-bottom: 9rem;
+  padding-left: 9rem;
+  padding-right: 9rem;
 }
 
 .display-block {
@@ -169,6 +166,22 @@ ul.nav li a:hover {
   color:  #001f3f;
   font-size: 3rem;
 }
+
+.about-container {
+    padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.about-text {
+  text-align: justify;
+  font-size: 1.2rem;
+}
+.about-footnote {
+  padding-top: 5rem;
+  text-align: justify;
+  border: ;
+}
+
 
 
 /* REMOVED CREATE-REACT-APP DEFAULT CSS */

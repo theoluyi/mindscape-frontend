@@ -21,11 +21,9 @@ class PerceptionCreatorForm extends React.Component {
 
     render() {
         return(
-
             <div className='perception-input'> 
-
-            <h1>Where is your mind?</h1>                
-            <Form onSubmit={this.handleFormSubmit}>
+                <h1>Where is your mind?</h1>                
+                <Form onSubmit={this.handleFormSubmit}>
                     <Form.Input
                         name='perception' 
                         // label='What perceptions are arising? 🧐' 
