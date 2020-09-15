@@ -40,10 +40,9 @@ return(
           <p> 
           Physically noting down what has captured your attention not only helps you 
           to pause mindfully before returning to your homebase, but also relieves you of the 
-          compulsion to remember any thoughts you may have had. This further facilitates your 
-          ability to transition from a state of <i><b>mind-wandering</b></i> back to <b><i>mindful concentration.</i></b></p>
-
-          <p>I hope that Mindscape helps you gain insight into your own inner world.</p>
+          compulsion to remember any important thoughts you may have had. This further facilitates your 
+          ability to transition from a state of <i><b>mind-wandering</b></i> back to <b><i>mindful concentration.</i></b> 
+          I hope that Mindscape helps you gain greater insight into your own inner world.</p>
         </div>
 
         <br/><br/>
