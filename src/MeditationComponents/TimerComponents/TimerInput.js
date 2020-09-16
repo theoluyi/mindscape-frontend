@@ -6,7 +6,7 @@ class TimerInput extends React.Component {
 
     render() {
       return (
-       <div>
+       <div className='timer-input'>
           <Form.Input 
             type="number" 
             minutes={this.props.minutes}

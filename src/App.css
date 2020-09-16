@@ -31,10 +31,36 @@ footer {
 }
 
 .meditation-menu {
-  color:   #001f3f;
-  min-width: 80vh;
+  color: #001f3f;
+  /* min-width: 80vh; */
 }
 
+.countdown {
+  color:  #001f3f;
+  min-width: 8rem;
+}
+
+
+/* can't git ridda dem dam arrows */
+/* 3 */
+/* .timer-input > input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} */
+
+/* 2
+.meditation-menu > div > input {
+  color:red;
+} */
+
+/* 1
+.meditation-menu > div > input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} */
+
+
+/* ------------------------------------------------------------------- */
 /* this is messing up the perception input, it's pushing it to the left side
   Im going to try targeting the meditation-container instead */
 /* .perception-input {
@@ -159,6 +185,10 @@ ul.nav li a:hover {
   background-color: #111;
 }
 
+.ui.button {
+  min-width: 8rem;
+}
+
 /* fancy gradient for Welcome to Mindscape text */
 #header {
   color: #001f3f;
@@ -187,8 +217,8 @@ ul.nav li a:hover {
   width: 50%;
   font-size: small;
   text-align: center;
-
 }
+
 
 .about-footnote {
   text-align: justify;

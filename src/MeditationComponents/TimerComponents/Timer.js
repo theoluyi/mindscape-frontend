@@ -5,10 +5,10 @@ class Timer extends React.Component {
     
     render() {
        return (
-        <div>
-         <h1 style={{ fontSize: 30 }}> 
+        <div className='countdown'>
+         <h5 style={{ fontSize: 30 }}> 
             {this.props.minutes}:{this.props.seconds}
-         </h1>
+         </h5>
         </div>
       );
     }
