@@ -78,7 +78,7 @@ class SessionCreatorForm extends React.Component {
         return(
             <Form onSubmit={this.handleFormSubmit}>
                 <Form.Group widths='equal'>
-                    <div>
+                    <div className='annoying-date-picker'>
                         <div><strong>Date</strong></div>
                         <DatePicker
                             fluid

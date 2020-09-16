@@ -210,12 +210,19 @@ ul.nav li a:hover {
   min-width: 8vw;
 }
 
-/* fancy gradient for Welcome to Mindscape text */
+/* Welcome to Mindscape text */
 #header {
   color: #001f3f;
   font-size: 3rem;
 }
 
+/* SESSIONS */
+.annoying-date-picker {
+  padding-top: 4px;
+  padding-left: 7px;
+}
+
+/* ABOUT */
 .about-container {
     padding-left: 5rem;
   padding-right: 5rem;
