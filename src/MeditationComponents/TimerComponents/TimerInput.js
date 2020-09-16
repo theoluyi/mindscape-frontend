@@ -7,10 +7,7 @@ class TimerInput extends React.Component {
     render() {
       return (
           <Form.Input 
-            className='timer-item timer-input'
-            id='timer-input'
-            size="medium"
-
+            size="small"
             type="number" 
             minutes={this.props.minutes}
             onChange={this.props.handleInput}

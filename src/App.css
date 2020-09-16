@@ -51,8 +51,8 @@ footer {
 } */
 
 /* this works but changes both input sizes */
-/* AHA I passed the Form.Input a size='medium' property which allows me to target just that input */
-div.ui.medium.input {
+/* AHA I passed the Form.Input a size='small' property which allows me to target just that input */
+div.ui.small.input {
   max-width: 20vw;
 }
 
@@ -185,7 +185,6 @@ ul.nav {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
   display: flex;
   justify-content: space-evenly;
   background-color: #001f3f;
@@ -199,9 +198,8 @@ ul.nav li a {
   display: block;
   color: #0074D9;
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
-  font-size: 150%
+  font-size: 1.2rem;
 }
 
 ul.nav li a:hover {
@@ -252,6 +250,6 @@ ul.nav li a:hover {
 #landscape {
   border-style: solid;
   border-color:  #001f3f;
-  border-width: .8rem;
+  border-width: 1rem;
   max-width: 90vw;
 }
