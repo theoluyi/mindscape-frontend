@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form, Container} from 'semantic-ui-react'
+import {Form} from 'semantic-ui-react'
 
 class PerceptionCreatorForm extends React.Component {
     state = {

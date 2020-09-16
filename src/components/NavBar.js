@@ -1,6 +1,10 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom'
 
+// I refactored this into a class comp thinking that issues with rerendering might be
+// due to using a stateless comp, reality was I was asking localStorage.user?
+// when I should have been asking localStorage.token?
+
 class NavBar extends React.Component {
 
   logout = () => {
@@ -10,7 +14,6 @@ class NavBar extends React.Component {
   }
 
   render() {
-    // console.log(localStorage.user)
     const smallNavBar = (
       localStorage.token? 
       // if user IS logged in, show logout, omit login and register

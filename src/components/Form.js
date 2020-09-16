@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {
-  Button,
+  // Button,
   Form as UiForm,
   Grid,
   Header,
-  Message,
+  // Message,
   Segment,
 } from 'semantic-ui-react'
 

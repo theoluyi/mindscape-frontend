@@ -57,7 +57,7 @@ const SessionsTable = (props) => {
 
         <Container>
         <div>
-            <h1> {localStorage.token? String(props.user.username)+`'s ` + `Sessions` : `Please sign in to see your sessions`} </h1>
+            <h1> {localStorage.token? String(props.user.username)+`'s Sessions` : `Please sign in to see your sessions`} </h1>
             <Divider/>
             <SessionCreatorForm 
                 createNewSession={props.createNewSession} 
