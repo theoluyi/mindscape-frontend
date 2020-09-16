@@ -51,7 +51,7 @@ class App extends React.Component {
     if (resp.user) {
       localStorage.token = resp.token
       this.setState(resp, () => {
-        this.props.history.push("/meditate")
+        this.props.history.push("/sessions")
       })
     }
     else { 

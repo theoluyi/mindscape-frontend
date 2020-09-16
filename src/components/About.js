@@ -8,6 +8,8 @@ return(
     <Container className='about-container'>
         <h1> About </h1>
         <Divider/>
+    
+        <h2 className='about-text'>Concept</h2>
         <div className='about-text'>
           <p><i><b>Mindscape</b></i> is an interactive meditation app that allows meditators to jot down their 
           passing thoughts while meditating and save them for later review. The mission of this app is to help 
@@ -41,8 +43,24 @@ return(
           Physically noting down what has captured your attention not only helps you 
           to pause mindfully before returning to your homebase, but also relieves you of the 
           compulsion to remember any important thoughts you may have had. This further facilitates your 
-          ability to transition from a state of <i><b>mind-wandering</b></i> back to <b><i>mindful concentration.</i></b> 
+          ability to transition from a state of <i><b>mind-wandering</b></i> back to <b><i>mindful concentration. </i></b>  
           I hope that Mindscape helps you gain greater insight into your own inner world.</p>
+        </div>
+
+        <br/>
+        <h2 className='about-text'>How to use Mindscape</h2>
+        <div className='about-text'>
+          <p>
+            To meditate, click on the "Meditate" tab, select a duration, and click the start button.
+            While you are meditating, whenever you notice a thought or perception arise, you can 
+            note it down by typing a description into the field and clicking the 'Note your perception' 
+            button or just pressing enter.
+          </p>
+          <p>
+            To view all your meditation sessions and notes, click on the "Sessions" tab. 
+            All of your sessions are here and you can also add any sessions from meditations you completed 
+            outside of the app as well. 
+          </p>
         </div>
 
         <br/><br/>

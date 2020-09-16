@@ -33,19 +33,17 @@ const SessionsTable = (props) => {
             <Table.Row key={session.id} >
                 <Table.Cell>
                 <Header as='h5' textAlign='left'>
-                    {date}
+                {String(date)}
                 </Header>
                 </Table.Cell>
                 <Table.Cell textAlign='center'>
-                    {minuteDuration} min
+                {String(minuteDuration)} min
                 </Table.Cell>
                 <Table.Cell textAlign='left'>
-                    {session.summary}
+                {session.summary}
                 </Table.Cell>
                 <Table.Cell textAlign='left'>
-                    {sessionPerceptionsArray}
-                    {/* {sessionPerceptionsString} */}
-                    {/* {session.perceptions[0] ? session.perceptions[0].note : ''} */}
+                {sessionPerceptionsArray}
                 </Table.Cell>
             </Table.Row>
 
@@ -64,13 +62,13 @@ const SessionsTable = (props) => {
                 user={props.user}
                 token={props.token}
             />
-            <Table className="ui table" celled padded>
+            <Table className="ui table" celled>
             {/* HARDCODED COLUMN TITLES I.E., HEADER CELLS */}
                 <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell className="one wide" singleLine>Date</Table.HeaderCell>
-                    <Table.HeaderCell className="one wide" >Duration</Table.HeaderCell>
-                    <Table.HeaderCell className="eight wide" >Summary</Table.HeaderCell>
+                    <Table.HeaderCell className="two wide" >Date</Table.HeaderCell>
+                    <Table.HeaderCell className="two wide" >Duration</Table.HeaderCell>
+                    <Table.HeaderCell className="six wide" >Summary</Table.HeaderCell>
                     <Table.HeaderCell className="six wide" >Perceptions</Table.HeaderCell>
                 </Table.Row>
                 </Table.Header>

@@ -222,6 +222,9 @@ ul.nav li a:hover {
   padding-left: 7px;
 }
 
+.ui.table {
+}
+
 /* ABOUT */
 .about-container {
     padding-left: 5rem;
@@ -236,6 +239,7 @@ ul.nav li a:hover {
 .about-text > figure > img {
   border-style: solid;
   border-color: black;
+  min-width: 40vw;
 }
 
 .center {
