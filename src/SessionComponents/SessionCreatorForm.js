@@ -74,7 +74,7 @@ class SessionCreatorForm extends React.Component {
 
     render() {
         const { start_time, duration, summary } = this.state
-        console.log("this.props.user.id: ", this.props.user.id)
+        // console.log("this.props.user.id: ", this.props.user.id)
         return(
             <Form onSubmit={this.handleFormSubmit}>
                 <Form.Group widths='equal'>

@@ -1,4 +1,5 @@
 import React from 'react'
+import {Button} from 'semantic-ui-react'
 
 class StartButton extends React.Component {
     handleClick = (event) => {
@@ -12,14 +13,12 @@ class StartButton extends React.Component {
 
     render() {
       return(
-       <div>
-        <button
-            className="ui button"
+        <Button
+            className="ui button timer-item"
             onClick={this.handleClick}
             >
             {this.props.timerStarted? 'Pause' : 'Start'}
-        </button>
-      </div>
+        </Button>
        );
    }
  } 

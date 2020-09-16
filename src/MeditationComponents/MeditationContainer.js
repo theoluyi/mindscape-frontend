@@ -129,6 +129,7 @@ class MeditationContainer extends React.Component {
                             resetCountDown={this.resetCountDown}
                             />
                             <Button 
+                                className="ui button"
                                 type="button"
                                 onClick={this.showModal}
                             >

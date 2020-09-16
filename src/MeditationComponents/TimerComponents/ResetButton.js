@@ -1,4 +1,6 @@
 import React from 'react'
+import {Button} from 'semantic-ui-react'
+
 
 class ResetButton extends React.Component {
     // commenting this out because i don't think this needs state
@@ -7,20 +9,17 @@ class ResetButton extends React.Component {
     // }
 
     handleClick = (event) => {
-        console.log("reset button clicked")
         this.props.resetCountDown()
     }
 
     render() {
       return(
-       <div>
-        <button
-            className="ui button"
+        <Button
+            className="ui button timer-item"
             onClick={this.handleClick}
             >
             Reset
-        </button>
-      </div>
+        </Button>
        );
    }
  } 
