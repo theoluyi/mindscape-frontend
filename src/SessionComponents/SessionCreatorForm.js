@@ -47,7 +47,7 @@ class SessionCreatorForm extends React.Component {
         let statePlusUserID = {...this.state, user_id: this.props.user.id}
         console.log("Form Submitted in SessionCreatorForm component")
 
-        fetch('http://localhost:4000/sessions', {
+        fetch('https://mindscape.netlify.app/sessions', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',

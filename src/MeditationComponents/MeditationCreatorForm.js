@@ -26,7 +26,7 @@ class MeditationCreatorForm extends React.Component {
 
         console.log("Form Submitted in MeditationCreatorForm component")
         console.log("pre-fetch sessionObj: ", sessionObj)
-        fetch('http://localhost:4000/sessions', {
+        fetch('https://mindscape.netlify.app/sessions', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
