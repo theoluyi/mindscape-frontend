@@ -34,7 +34,7 @@ class App extends React.Component {
 
   componentDidMount(){
     if (localStorage.getItem('token')) {
-      fetch('http://localhost:4000/persist', {
+      fetch('https://mindscape-v1-build.herokuapp.com/persist', {
         headers: {
           'Authorization': `Bearer ${localStorage.token}`
         }
@@ -63,7 +63,7 @@ class App extends React.Component {
     console.log("Log in form submitted")
     console.log(userInfo)
 
-    fetch('http://localhost:4000/login', {
+    fetch('https://mindscape-v1-build.herokuapp.com/login', {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -80,7 +80,7 @@ class App extends React.Component {
   handleRegisterSubmit = (userInfo) => {
     console.log("Register form submitted")
 
-    fetch("http://localhost:4000/users", {
+    fetch("https://mindscape-v1-build.herokuapp.com/users", {
       method: "POST",
       headers: {
         "content-type": "application/json"
