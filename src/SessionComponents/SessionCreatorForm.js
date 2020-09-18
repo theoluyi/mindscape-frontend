@@ -45,7 +45,7 @@ class SessionCreatorForm extends React.Component {
     handleFormSubmit = (e, unknownObj) => {
         e.preventDefault()
         let statePlusUserID = {...this.state, user_id: this.props.user.id}
-        console.log("Form Submitted in SessionCreatorForm component")
+        // console.log("Form Submitted in SessionCreatorForm component")
 
         fetch('https://mindscape-v1-build.herokuapp.com/sessions', {
             method: 'POST',
