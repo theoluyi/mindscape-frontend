@@ -71,7 +71,6 @@ class App extends React.Component {
     .then(r=>r.json())
     .then((resp) => {
       this.handleResponse(resp)
-      console.log(resp)
     })
   }
 
@@ -99,7 +98,6 @@ class App extends React.Component {
   }
 
   createNewSession = (newSession) => {
-    console.log("hello from inside App", newSession)
     let newSessionsArray = [...this.state.user.sessions, newSession]
 
     this.setState({
