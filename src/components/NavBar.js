@@ -8,7 +8,6 @@ import {NavLink} from 'react-router-dom'
 class NavBar extends React.Component {
 
   logout = () => {
-    console.log("logout button pressed")
     localStorage.clear()
     this.props.clearAppState()
   }
