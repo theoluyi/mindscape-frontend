@@ -223,13 +223,15 @@ ul.nav li a:hover {
   padding-left: 7px;
 }
 
-.ui.table {
-}
+/* QQ */
+/* .ui.table {
+} */
 
 /* ABOUT */
 .about-container {
-    padding-left: 5rem;
-  padding-right: 5rem;
+  display: flex;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 
 .about-text {
@@ -237,10 +239,15 @@ ul.nav li a:hover {
   font-size: 1.2rem;
 }
 
+/* QQ this is way too annoying to center 
+    seems good enough for now though*/
 .about-text > figure > img {
   border-style: solid;
   border-color: black;
-  min-width: 40vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50vw;
 }
 
 .center {

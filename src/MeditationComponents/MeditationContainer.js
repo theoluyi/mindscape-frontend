@@ -31,7 +31,7 @@ class MeditationContainer extends React.Component {
     }
 
     addOnePerception = (perception) => {
-        console.log(`${perception} perceived (in the MeditationContainer)`)
+        // console.log(`${perception} perceived (in the MeditationContainer)`)
         let copyOfState = {...this.state}
         copyOfState.session.perceptions.push(perception)
         this.setState(copyOfState)
