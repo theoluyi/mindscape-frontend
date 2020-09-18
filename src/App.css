@@ -188,6 +188,7 @@ ul.nav {
   display: flex;
   justify-content: space-evenly;
   background-color: #001f3f;
+  flex-wrap: wrap;
 }
 
 ul.nav li {
