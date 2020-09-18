@@ -26,7 +26,7 @@ class MeditationCreatorForm extends React.Component {
 
         console.log("Form Submitted in MeditationCreatorForm component")
         console.log("pre-fetch sessionObj: ", sessionObj)
-        fetch('https://mindscape.netlify.app/sessions', {
+        fetch('https://mindscape-v1-build.herokuapp.com/sessions', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -38,21 +38,6 @@ class MeditationCreatorForm extends React.Component {
         .then(sessionPOJO => {
             this.props.createNewSession(sessionPOJO)
             console.log("post-fetch sessionPOJO: ", sessionPOJO)
-
-            // LAST NIGHT SLEEPILY TRYING TO CHAIN FETCHES BEFORE REALIZING THIS ISN'T WHAT I WANT
-            // console.log("sessionPOJO.id: ", sessionPOJO.id, "sessionPOJO: ", sessionPOJO)
-            // fetch('http://localhost:4000/perceptions', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-type': 'application/json',
-            //         'Authorization': `bearer ${this.props.token}`
-            //     },
-            //     body: JSON.stringify({
-            //         ...this.props.meditationState.session, 
-            //         perceptions: this.props.meditationState.perceptions
-            //     })
-            // })
-
         })
         // wipes form and state clean
         this.setState({
