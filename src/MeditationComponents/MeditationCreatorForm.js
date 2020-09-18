@@ -53,8 +53,6 @@ class MeditationCreatorForm extends React.Component {
 
     render() {
         const { summary } = this.state
-        // console.log(this.props.meditationState)
-        // console.log(this.props.userID)
         
         return(
             <Form onSubmit={this.handleFormSubmit}>

@@ -60,8 +60,6 @@ class App extends React.Component {
   }
 
   handleLoginSubmit = (userInfo) => {
-    console.log("Log in form submitted")
-    console.log(userInfo)
 
     fetch('https://mindscape-v1-build.herokuapp.com/login', {
       method: "POST",
@@ -78,7 +76,6 @@ class App extends React.Component {
   }
 
   handleRegisterSubmit = (userInfo) => {
-    console.log("Register form submitted")
 
     fetch("https://mindscape-v1-build.herokuapp.com/users", {
       method: "POST",
@@ -89,9 +86,7 @@ class App extends React.Component {
     })
     .then(r=>r.json())
     .then(resp => {
-      console.log("HMMMMMM")
       this.handleResponse(resp)
-      console.log("OOKAAAY")
     })
   }
 
@@ -116,7 +111,6 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log(this.state)
     
     return (
     <div className='wrapper'>
